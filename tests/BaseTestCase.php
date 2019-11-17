@@ -3,8 +3,9 @@
 namespace Cdefoe\LaravelCoinbase\Tests;
 
 use Orchestra\Testbench\TestCase as TestCase;
-use Cdefoe\LaravelCoinbase\LaravelCoinbaseFacade;
-use Cdefoe\LaravelCoinbase\LaravelCoinbaseServiceProvider;
+use Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseFacade;
+use Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseProFacade;
+use Cdefoe\LaravelCoinbase\Providers\LaravelCoinbaseServiceProvider;
 
 class BaseTestCase extends TestCase
 {
@@ -19,6 +20,7 @@ class BaseTestCase extends TestCase
     {
         return [
             'LaravelCoinbase' => LaravelCoinbaseFacade::class,
+            'LaravelCoinbasePro' => LaravelCoinbaseProFacade::class
         ];
     }
 }

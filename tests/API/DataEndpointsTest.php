@@ -1,8 +1,9 @@
 <?php
 
-namespace Cdefoe\LaravelCoinbase\Tests;
+namespace Cdefoe\LaravelCoinbase\Tests\API;
 
 use Mockery;
+use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use Cdefoe\LaravelCoinbase\CoinbaseClient;
 use Cdefoe\LaravelCoinbase\LaravelCoinbase;
 
