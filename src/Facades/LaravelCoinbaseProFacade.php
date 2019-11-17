@@ -1,10 +1,10 @@
 <?php
 
-namespace Cdefoe\LaravelCoinbase;
+namespace Cdefoe\LaravelCoinbase\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class LaravelCoinbaseFacade extends Facade
+class LaravelCoinbaseProFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class LaravelCoinbaseFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-coinbase';
+        return 'laravel-coinbase-pro';
     }
 }
