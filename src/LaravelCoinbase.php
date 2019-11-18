@@ -27,12 +27,16 @@ class LaravelCoinbase
     /**
      * Get exchange rates.
      *
-     * @param string $currency The currency
+     * @param string $currency (optional) The currency.
      *
      * @return array
      */
     public function exchangeRates($currency = 'USD')
     {
-        return $this->coinbaseClient->get('exchange-rates', ['currency' => $currency])['data'];
+        return $this->coinbaseClient->get('exchange-rates', [
+            'query' => [
+                'currency' => $currency
+            ]
+        ])['data'];
     }
 }
