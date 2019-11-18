@@ -130,6 +130,6 @@ class MarketDataTest extends BaseTestCase
 
     public function test_abc()
     {
-        dd(\LaravelCoinbasePro::productTrades('BTC-USD'));
+        // dd(\LaravelCoinbasePro::productTrades('BTC-USD'));
     }
 }
