@@ -1,5 +1,6 @@
 # Laravel Coinbase
 [![Code Coverage](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/?branch=master)
+
 Description coming soon
 
 ## Installation
