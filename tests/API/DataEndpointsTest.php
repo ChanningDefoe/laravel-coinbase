@@ -60,4 +60,26 @@ class DataEndpointsTest extends BaseTestCase
             ],
         ], $response);
     }
+
+    public function test_exchange_rates_with_currency_type()
+    {
+        $responseData = [
+            "currency" => "USD",
+            "rates" => [
+                "AED" => "4.06",
+                "AFN" => "86.42",
+            ],
+        ];
+        $mockCoinbaseClient = Mockery::mock(CoinbaseClient::class);
+        $mockCoinbaseClient->shouldReceive('get')->once()->andReturn([
+            'data' => $responseData
+        ]);
+        $this->app->instance(CoinbaseClient::class, $mockCoinbaseClient);
+                
+        // Act
+        $response = app(LaravelCoinbase::class)->exchangeRates("EUR");
+
+        // Assert
+        $this->assertEquals($responseData, $response);
+    }
 }
