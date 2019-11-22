@@ -54,6 +54,24 @@ LaravelCoinbase::exchangeRates('EUR');
 
 ### Coinbase PRO API
 
+#### Market Data
+
+##### Get Products Data
+``` php
+LaravelCoinbasePro::products();
+```
+
+##### Get Products Order Book
+``` php
+LaravelCoinbasePro::productOrderBook('BTC-USD');
+```
+
+##### Get Products Order Book with Level
+``` php
+// Available levels are 1,2 and 3
+LaravelCoinbasePro::productOrderBook('BTC-USD', 2);
+```
+
 ### Testing and Styling
 
 Running PHPUnit Tests:
