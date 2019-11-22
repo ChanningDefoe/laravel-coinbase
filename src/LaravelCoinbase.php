@@ -35,8 +35,8 @@ class LaravelCoinbase
     {
         return $this->coinbaseClient->get('exchange-rates', [
             'query' => [
-                'currency' => $currency
-            ]
+                'currency' => $currency,
+            ],
         ])['data'];
     }
 }

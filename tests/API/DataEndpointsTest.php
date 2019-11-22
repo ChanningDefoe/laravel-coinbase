@@ -3,9 +3,9 @@
 namespace Cdefoe\LaravelCoinbase\Tests\API;
 
 use Mockery;
-use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use Cdefoe\LaravelCoinbase\CoinbaseClient;
 use Cdefoe\LaravelCoinbase\LaravelCoinbase;
+use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 
 class DataEndpointsTest extends BaseTestCase
 {
@@ -72,7 +72,7 @@ class DataEndpointsTest extends BaseTestCase
         ];
         $mockCoinbaseClient = Mockery::mock(CoinbaseClient::class);
         $mockCoinbaseClient->shouldReceive('get')->once()->andReturn([
-            'data' => $responseData
+            'data' => $responseData,
         ]);
         $this->app->instance(CoinbaseClient::class, $mockCoinbaseClient);
                 
