@@ -4,12 +4,12 @@ namespace Cdefoe\LaravelCoinbase\Tests\ProAPI;
 
 use Mockery;
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
 use Cdefoe\LaravelCoinbase\CoinbaseClient;
-use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use Cdefoe\LaravelCoinbase\LaravelCoinbasePro;
+use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 
 class MarketDataTest extends BaseTestCase
 {
@@ -52,7 +52,7 @@ class MarketDataTest extends BaseTestCase
                 "cancel_only" => false,
                 "status" => "online",
                 "status_message" => "",
-            ]
+            ],
         ];
         $mockCoinbaseClient = Mockery::mock(CoinbaseClient::class);
         $mockCoinbaseClient->shouldReceive('get')->once()->andReturn($returnedData);
@@ -96,7 +96,7 @@ class MarketDataTest extends BaseTestCase
             "asks" => [
                 ["8476.15", "0.4553", 3],
                 ["9543.55", "0.0046", 2],
-            ]
+            ],
         ];
         $mockCoinbaseClient = Mockery::mock(CoinbaseClient::class);
         $mockCoinbaseClient->shouldReceive('get')->once()->andReturn($returnedData);
@@ -125,11 +125,11 @@ class MarketDataTest extends BaseTestCase
         $mockCoinbaseClient->shouldReceive('get')->once()->andReturn($returnedData);
         $this->app->instance(CoinbaseClient::class, $mockCoinbaseClient);
 
-       // Act
-       $response = app(LaravelCoinbasePro::class)->productTicker('BTC-USD');
+        // Act
+        $response = app(LaravelCoinbasePro::class)->productTicker('BTC-USD');
 
-       // Assert
-       $this->assertEquals($returnedData, $response);
+        // Assert
+        $this->assertEquals($returnedData, $response);
     }
 
     public function test_get_product_trades_get_body()
@@ -231,7 +231,7 @@ class MarketDataTest extends BaseTestCase
                 "price" => "7648.74000000",
                 "size" => "0.00100000",
                 "side" => "buy",
-            ]
+            ],
         ];
     }
 }

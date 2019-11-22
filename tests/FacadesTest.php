@@ -2,7 +2,6 @@
 
 namespace Cdefoe\LaravelCoinbase\Tests;
 
-use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseFacade;
 use Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseProFacade;
 

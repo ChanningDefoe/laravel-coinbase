@@ -2,11 +2,10 @@
 
 namespace Cdefoe\LaravelCoinbase\Tests;
 
-use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
 use Cdefoe\LaravelCoinbase\CoinbaseClient;
 
 class CoinbaseClientTest extends BaseTestCase

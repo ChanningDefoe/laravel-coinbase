@@ -20,7 +20,7 @@ class BaseTestCase extends TestCase
     {
         return [
             'LaravelCoinbase' => LaravelCoinbaseFacade::class,
-            'LaravelCoinbasePro' => LaravelCoinbaseProFacade::class
+            'LaravelCoinbasePro' => LaravelCoinbaseProFacade::class,
         ];
     }
 }
