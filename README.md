@@ -10,11 +10,49 @@ You can install the package via composer:
 composer require cdefoe/laravel-coinbase
 ```
 
+### Laravel Installation
+
+Add the service provider and alias to your `config/app.php` file:
+
+```php
+// Coinbase APIS
+Cdefoe\LaravelCoinbase\Providers\LaravelCoinbaseServiceProvider::class
+'LaravelCoinbase' => Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseFacade::class
+
+// Coinbase Pro APIS
+Cdefoe\LaravelCoinbase\Providers\LaravelCoinbaseServiceProvider::class
+'LaravelCoinbasePro' => Cdefoe\LaravelCoinbase\Facades\LaravelCoinbaseProFacade::class
+```
+
+### Configuration
+Publish a config file using the `artisan` command:
+```bash
+php artisan vendor:publish
+```
+This will publish a `laravel-coinbase.php` file where you can update your settings
+
 ## Usage
 
+This package inclues usage for both of Coinbase's public APIs.
+
+### Coinbase API
+
+#### Market Data
+
+##### Get Currencies
 ``` php
-// Usage description here
+LaravelCoinbase::currencies();
 ```
+
+##### Get Currencies
+``` php
+// Default: USD
+LaravelCoinbase::exchangeRates();
+// Get a different currency
+LaravelCoinbase::exchangeRates('EUR');
+```
+
+### Coinbase PRO API
 
 ### Testing and Styling
 
