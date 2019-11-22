@@ -60,7 +60,7 @@ class CoinbaseClient
     {
         $response = $this->client->request(strtoupper($method), $path, $params);
 
-        new ProPaginationResponse($this->client, $path, $method, $response);
+        return new ProPaginationResponse($this->client, $path, $method, $response);
     }
 
     /**
