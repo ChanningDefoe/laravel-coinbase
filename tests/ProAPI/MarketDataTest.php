@@ -3,6 +3,10 @@
 namespace Cdefoe\LaravelCoinbase\Tests\ProAPI;
 
 use Mockery;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\HandlerStack;
 use Cdefoe\LaravelCoinbase\CoinbaseClient;
 use Cdefoe\LaravelCoinbase\Tests\BaseTestCase;
 use Cdefoe\LaravelCoinbase\LaravelCoinbasePro;
@@ -128,8 +132,106 @@ class MarketDataTest extends BaseTestCase
        $this->assertEquals($returnedData, $response);
     }
 
-    public function test_abc()
+    public function test_get_product_trades_get_body()
     {
-        // dd(\LaravelCoinbasePro::productTrades('BTC-USD'));
+        // Arrange
+        $mockResponse = new MockHandler([
+            new Response(
+                200,
+                ['cb-after' => '123', 'cb-before' => '312'],
+                json_encode($this->getFakeProductMarketTradesData())
+            ),
+        ]);
+        $handler = HandlerStack::create($mockResponse);
+        $client = new Client(['handler' => $handler]);
+        $this->app->instance(Client::class, new Client(['handler' => $handler]));
+        
+        // Act
+        $response = app(LaravelCoinbasePro::class)->productTrades('BTC-USD')->getBody();
+
+        // Assert
+        $this->assertEquals($this->getFakeProductMarketTradesData(), $response);
+    }
+
+    public function test_get_product_trades_get_after()
+    {
+        // Arrange
+        $mockResponse = new MockHandler([
+            new Response(
+                200,
+                ['cb-after' => '123', 'cb-before' => '312'],
+                json_encode(['foo' => 'bar'])
+            ),
+            new Response(
+                200,
+                ['cb-after' => '123', 'cb-before' => '312'],
+                json_encode($this->getFakeProductMarketTradesData())
+            ),
+        ]);
+        $handler = HandlerStack::create($mockResponse);
+        $client = new Client(['handler' => $handler]);
+        $this->app->instance(Client::class, new Client(['handler' => $handler]));
+        
+        // Act
+        $response = app(LaravelCoinbasePro::class)->productTrades('BTC-USD')->getAfter()->getBody();
+
+        // Assert
+        $this->assertEquals($this->getFakeProductMarketTradesData(), $response);
+    }
+
+    public function test_get_product_trades_get_before()
+    {
+        // Arrange
+        $mockResponse = new MockHandler([
+            new Response(
+                200,
+                ['cb-after' => '123', 'cb-before' => '312'],
+                json_encode(['foo' => 'bar'])
+            ),
+            new Response(
+                200,
+                ['cb-after' => '123', 'cb-before' => '312'],
+                json_encode($this->getFakeProductMarketTradesData())
+            ),
+        ]);
+        $handler = HandlerStack::create($mockResponse);
+        $client = new Client(['handler' => $handler]);
+        $this->app->instance(Client::class, new Client(['handler' => $handler]));
+        
+        // Act
+        $response = app(LaravelCoinbasePro::class)->productTrades('BTC-USD')->getBefore()->getBody();
+
+        // Assert
+        $this->assertEquals($this->getFakeProductMarketTradesData(), $response);
+    }
+
+    /**
+     * Get Fake Product Market Trades Data
+     */
+    private function getFakeProductMarketTradesData()
+    {
+        return [
+            [
+                "time" => "2019-11-22T02:05:14.15Z",
+                "trade_id" => 7403845,
+                "price" => "7648.75000000",
+                "size" => "0.00100000",
+                "side" => "sell",
+            ],
+            [
+                "time" => "2019-11-22T02:04:44.548Z",
+                "trade_id" => 7403844,
+                "price" => "7648.74000000",
+                "size" => "0.00100000",
+                "side" => "buy",
+            ],
+            [
+                "time" => "2019-11-22T02:02:45.147Z",
+                "trade_id" => 7403839,
+                "price" => "7648.74000000",
+                "size" => "0.00100000",
+                "side" => "buy",
+            ]
+        ];
     }
 }

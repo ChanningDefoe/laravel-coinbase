@@ -55,8 +55,6 @@ class ProPaginationResponse
         $this->response = $response;
         $this->headers = $response->getHeaders();
         $this->body = $response->getBody();
-
-        dd($this->getAfter());
     }
 
     /**
@@ -80,7 +78,7 @@ class ProPaginationResponse
             ]
         ]);
 
-        return new ProPaginationResponse($this->client, $this->path, $this->method, $response);
+        return new static($this->client, $this->path, $this->method, $response);
     }
 
     public function getAfter()
@@ -91,6 +89,6 @@ class ProPaginationResponse
             ]
         ]);
 
-        $test = new ProPaginationResponse($this->client, $this->path, $this->method, $response);
+        return new static($this->client, $this->path, $this->method, $response);
     }
 }
