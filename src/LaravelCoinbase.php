@@ -39,4 +39,45 @@ class LaravelCoinbase
             ],
         ])['data'];
     }
+
+    /**
+     * Get buy price.
+     * 
+     * @param string $currencyPair (optional) The currency pair.
+     * 
+     * @return array
+     */
+    public function getBuyPrice($currencyPair = 'BTC-USD')
+    {
+        return $this->coinbaseClient->get("prices/{$currencyPair}/buy")['data'];
+    }
+
+    /**
+     * Get sell price.
+     * 
+     * @param string $currencyPair (optional) The currency pair.
+     * 
+     * @return array
+     */
+    public function getSellPrice($currencyPair = 'BTC-USD')
+    {
+        return $this->coinbaseClient->get("prices/{$currencyPair}/sell")['data'];
+    }
+
+    /**
+     * Get spot price.
+     * 
+     * @param string $currencyPair (optional) The currency pair.
+     * @param string $date (optional) The date in YYYY-MM-DD format.
+     * 
+     * @return array
+     */
+    public function getSpotPrice($currencyPair = 'BTC-USD', $date = null)
+    {
+        return $this->coinbaseClient->get("prices/{$currencyPair}/spot", [
+            'query' => [
+                'date' => $date,
+            ],
+        ])['data'];
+    }
 }
