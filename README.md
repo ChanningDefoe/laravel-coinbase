@@ -38,20 +38,58 @@ This will publish a `laravel-coinbase.php` file where you can update your settin
 This package inclues usage for both of Coinbase's public APIs.
 
 ### Coinbase API
+The coinbase REST API to integrate bitcoin, bitcoin cash, litecoin and ethereum payments. [View Introduction Docs](https://developers.coinbase.com/api/v2#introduction).
 
 #### Market Data
+View [Market Data Endpoints](https://developers.coinbase.com/api/v2#data-endpoints).
 
 ##### Get Currencies
+[https://developers.coinbase.com/api/v2#get-currencies](https://developers.coinbase.com/api/v2#get-currencies).
+
 ``` php
 LaravelCoinbase::currencies();
 ```
 
-##### Get Currencies
+##### Get Exchange Rates
+[https://developers.coinbase.com/api/v2#get-exchange-rates](https://developers.coinbase.com/api/v2#get-exchange-rates).
+
 ``` php
 // Default: USD
 LaravelCoinbase::exchangeRates();
 // Get a different currency
 LaravelCoinbase::exchangeRates('EUR');
+```
+
+##### Get Buy Price
+Get the buy price for a currency pair. [https://developers.coinbase.com/api/v2#get-buy-price](https://developers.coinbase.com/api/v2#get-buy-price).
+
+``` php
+// Default: BTC-USD
+LaravelCoinbase::getBuyPrice();
+// Get a different currency
+LaravelCoinbase::getBuyPrice('BTC-EUR');
+```
+
+##### Get Sell Price
+Get the sell price for a currency pair. [https://developers.coinbase.com/api/v2#get-sell-price](https://developers.coinbase.com/api/v2#get-sell-price).
+
+``` php
+// Default: BTC-USD
+LaravelCoinbase::getSellPrice();
+// Get a different currency
+LaravelCoinbase::getSellPrice('BTC-EUR');
+```
+
+##### Get Spot Price
+Get the spot price for a currency pair. [https://developers.coinbase.com/api/v2#get-spot-price](https://developers.coinbase.com/api/v2#get-spot-price).
+
+``` php
+// Default: BTC-USD
+LaravelCoinbase::getSpotPrice();
+// Get a different currency
+LaravelCoinbase::getSpotPrice('BTC-EUR');
+// Get spot price for a previous data in YYYY-MM-DD format
+LaravelCoinbase::getSpotPrice('BTC-USD', '2017-01-01');
 ```
 
 ### Coinbase PRO API
