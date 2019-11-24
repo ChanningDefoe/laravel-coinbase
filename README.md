@@ -40,13 +40,18 @@ This package inclues usage for both of Coinbase's public APIs.
 ### Coinbase API
 
 #### Market Data
+View [Market Data Endpoints](https://developers.coinbase.com/api/v2#data-endpoints).
 
 ##### Get Currencies
+[https://developers.coinbase.com/api/v2#get-currencies](https://developers.coinbase.com/api/v2#get-currencies).
+
 ``` php
 LaravelCoinbase::currencies();
 ```
 
-##### Get Currencies
+##### Get Exchange Rates
+[https://developers.coinbase.com/api/v2#get-exchange-rates](https://developers.coinbase.com/api/v2#get-exchange-rates).
+
 ``` php
 // Default: USD
 LaravelCoinbase::exchangeRates();
