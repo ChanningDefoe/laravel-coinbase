@@ -96,20 +96,41 @@ LaravelCoinbase::getSpotPrice('BTC-USD', '2017-01-01');
 
 #### Market Data
 
+The [Market Data endpoints](https://docs.pro.coinbase.com/?php#market-data) from the Coinbase Pro API.
+
 ##### Get Products Data
+Get a list of available currency pairs for trading. [https://docs.pro.coinbase.com/?php#get-products](https://docs.pro.coinbase.com/?php#get-products).
 ``` php
 LaravelCoinbasePro::products();
 ```
 
 ##### Get Products Order Book
+Get a list of open orders for a product. The amount of detail shown can be customized with the level parameter. [https://docs.pro.coinbase.com/?php#get-product-order-book](https://docs.pro.coinbase.com/?php#get-product-order-book).
 ``` php
 LaravelCoinbasePro::productOrderBook('BTC-USD');
+// Get products order book with level. Levels are 1, 2, and 3.
+LaravelCoinbasePro::productOrderBook('BTC-USD', 2);
 ```
 
-##### Get Products Order Book with Level
+##### Get Products Ticker
+Snapshot information about the last trade (tick), best bid/ask and 24h volume. [https://docs.pro.coinbase.com/?php#get-product-ticker](https://docs.pro.coinbase.com/?php#get-product-ticker).
 ``` php
 // Available levels are 1,2 and 3
 LaravelCoinbasePro::productOrderBook('BTC-USD', 2);
+```
+
+##### Get Product Trades
+List the latest trades for a product on coinbase. [https://docs.pro.coinbase.com/?php#get-trades](https://docs.pro.coinbase.com/?php#get-trades).
+
+This request is paginated so you will have to append the `getBody()` function after the initial request to get the body. You can also use the `getAfter()` and `getBefore()` functions followed by `getBody()` to make requests after the initial request. You can stack the `getAfter` and `getBefore` requests as many times as you need.
+
+``` php
+$getProductTrades = LaravelCoinbasePro::productTrades('BTC-USD');
+// Get body of request
+$response = $getProductTrades->getBody();
+// Get response after or before
+$response = $getProductTrades->getAfter()->getBody();
+$response = $getProductTrades->getBefore()->getBody();
 ```
 
 ### Testing and Styling
