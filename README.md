@@ -1,8 +1,11 @@
 # Laravel Coinbase
+[![Laravel](https://img.shields.io/badge/Laravel-6.0-orange.svg?style=flat-square)](http://laravel.com)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ChanningDefoe/laravel-coinbase/?branch=master)
+[![License](https://poser.pugx.org/cdefoe/laravel-coinbase/license)](https://packagist.org/packages/cdefoe/laravel-coinbase)
+[![CircleCI](https://circleci.com/gh/ChanningDefoe/laravel-coinbase.svg?style=svg)](https://circleci.com/gh/ChanningDefoe/laravel-coinbase)
 
-Description coming soon
+A package for using the Coinbase Developer APIs and Coinbase PRO APIs. This package is still a work in progress. Feel free to make PRs.
 
 ## Installation
 
